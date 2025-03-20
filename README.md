@@ -8,14 +8,15 @@ Learn more about Zmpl at the [documentation](https://www.jetzig.dev/documentatio
 
 This is a Visual Studio Code extension that provides syntax highlighting for Zmpl files.
 
-Sample in Monokai theme:
+Preview in Monokai theme:
 
-![Sample syntax highlighting in Monokai theme](public/sample.png)
+![Syntax highlighting in Monokai theme](https://raw.githubusercontent.com/uzyn/zmpl-grammar/refs/heads/main/public/preview.png)
 
 
 ## Credits
 
-* [https://github.com/z1fire/zmpl-syntax-highlighting-vscode](Zackary Housen's VS Code extensions)
+* [Zmpl](https://github.com/jetzig-framework/zmpl) and its icon is copyright of Robert Farrell.
+* [https://github.com/z1fire/zmpl-syntax-highlighting-vscode](Zackary Housen's VS Code extensions) for the inspiration and reference.
 
 ## License
 

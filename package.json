@@ -14,12 +14,12 @@
     "url": "https://github.com/uzyn/zmpl-grammar",
     "type": "git"
   },
+  "homepage": "https://github.com/uzyn/zmpl-grammar",
   "engines": {
     "vscode": "^1.98.0"
   },
-  "categories": [
-    "Programming Languages", "Zmpl", "Zig", "Grammar", "Visual Studio Code", "Textmate", "Sublime Text"
-  ],
+  "icon": "icon.png",
+  "categories": ["Programming Languages"],
   "contributes": {
     "languages": [{
       "id": "zmpl",
