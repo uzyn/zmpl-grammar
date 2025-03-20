@@ -1,16 +1,13 @@
-# zmpl README
+# Zmpl grammar extension
 
-This is the README for your extension "zmpl". After writing up a brief description, we recommend including the following sections.
+[Zmpl](https://github.com/jetzig-framework/zmpl) is a templating language for Zig.
 
-## Features
+This is a Visual Studio Code extension that provides syntax highlighting for Zmpl files.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Sample syntax highlighting of Zmpl file in Monokai theme:
 
-For example if there is an image subfolder under your extension project workspace:
+![Sample syntax highlighting in Monokai theme](public/sample.png)
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
