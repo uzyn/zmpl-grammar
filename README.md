@@ -4,6 +4,10 @@
 
 Learn more about Zmpl at the [documentation](https://www.jetzig.dev/documentation/sections/zmpl/introduction).
 
+## Install
+
+Visual Studio Code: install from [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=uzyn.zmpl).
+
 ## Features
 
 This is a Visual Studio Code extension that provides syntax highlighting for Zmpl files.
