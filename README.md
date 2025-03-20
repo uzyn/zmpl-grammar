@@ -20,7 +20,7 @@ Preview in Monokai theme:
 ## Credits
 
 * [Zmpl](https://github.com/jetzig-framework/zmpl) and its icon is copyright of Robert Farrell.
-* [https://github.com/z1fire/zmpl-syntax-highlighting-vscode](Zackary Housen's VS Code extensions) for the inspiration and reference.
+* [Zackary Housen's extension](https://github.com/z1fire/zmpl-syntax-highlighting-vscode) for the inspiration and reference.
 
 ## License
 

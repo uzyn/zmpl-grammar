@@ -2,7 +2,7 @@
   "name": "zmpl",
   "displayName": "Zmpl",
   "description": "Zmpl language grammar. Zmpl is a templating language for Zig.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "uzyn",
   "author": {
     "name": "U-Zyn Chua",
