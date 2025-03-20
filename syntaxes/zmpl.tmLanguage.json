@@ -1,32 +1,275 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Zmpl",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.zmpl",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.zmpl",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.zmpl",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "text.html.zmpl"
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Zmpl",
+  "scopeName": "text.html.zmpl",
+  "fileTypes": ["zmpl"],
+  "patterns": [
+    {
+      "include": "#common-zmpl-patterns"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {
+    "common-zmpl-patterns": {
+      "patterns": [
+        {
+          "include": "#zmpl-directives"
+        },
+        {
+          "include": "#variable-interpolation"
+        },
+        {
+          "include": "#modes"
+        }
+      ]
+    },
+    "modes": {
+      "patterns": [
+        {
+          "begin": "@html\\s*\\{",
+          "beginCaptures": {
+            "0": { "name": "keyword.control.zmpl" }
+          },
+          "end": "\\}",
+          "name": "meta.embedded.html.zmpl",
+          "patterns": [
+            {
+              "include": "#common-zmpl-patterns"
+            },
+            {
+              "include": "text.html.basic"
+            }
+          ]
+        },
+        {
+          "begin": "@zig\\s*\\{",
+          "beginCaptures": {
+            "0": { "name": "keyword.control.zmpl" }
+          },
+          "end": "^\\s*\\}(?=\\s*$)",
+          "name": "meta.embedded.zig.zmpl",
+          "patterns": [
+            {
+              "match": "^\\s*<.+$",
+              "include": "text.html.basic"
+            },
+            {
+              "include": "#common-zmpl-patterns"
+            },
+            {
+              "include": "#zig-block"
+            },
+            {
+              "include": "source.zig"
+            }
+          ]
+        },
+        {
+          "begin": "@markdown\\s*\\{",
+          "beginCaptures": {
+            "0": { "name": "keyword.control.zmpl" }
+          },
+          "end": "\\}",
+          "name": "meta.embedded.markdown.zmpl",
+          "patterns": [
+            {
+              "include": "#common-zmpl-patterns"
+            },
+            {
+              "include": "text.html.markdown"
+            }
+          ]
+        },
+        {
+          "match": "@(extend|args|end|endif|endfor)",
+          "name": "keyword.control.zmpl"
+        }
+      ]
+    },
+    "zig-block": {
+      "patterns": [
+        {
+          "begin": "\\{",
+          "beginCaptures": {
+            "0": { "name": "punctuation.section.block.begin.zig" }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": { "name": "punctuation.section.block.end.zig" }
+          },
+          "name": "meta.brace.block.zig",
+          "patterns": [
+            {
+              "include": "#zig-block"
+            },
+            {
+              "include": "source.zig"
+            }
+          ]
+        }
+      ]
+    },
+    "zmpl-directives": {
+      "patterns": [
+        {
+          "match": "\\s*@if\\s+.*$",
+          "name": "keyword.control.if.zmpl",
+          "captures": {
+            "0": { "patterns": [{ "include": "#control-keywords" }] }
+          }
+        },
+        {
+          "match": "\\s*@else if\\s+.*$",
+          "name": "keyword.control.elseif.zmpl",
+          "captures": {
+            "0": { "patterns": [{ "include": "#control-keywords" }] }
+          }
+        },
+        {
+          "match": "@else\\s*$",
+          "name": "keyword.control.else.zmpl"
+        },
+        {
+          "match": "\\s*@args\\s+.*$",
+          "name": "meta.args.zmpl",
+          "captures": {
+            "0": { "patterns": [{ "include": "#args-keywords" }] }
+          }
+        },
+        {
+          "match": "\\s*@for\\s+.*$",
+          "name": "keyword.control.for.zmpl",
+          "captures": {
+            "0": { "patterns": [{ "include": "#control-keywords" }] }
+          }
+        },
+        {
+          "match": "\\s*(@partial)\\s+(\\w+(?:/\\w+)*)\\s*\\((.*?)\\)",
+          "name": "keyword.control.partial.zmpl",
+          "captures": {
+            "1": { "name": "keyword.control.zmpl" },
+            "2": { "name": "entity.name.function.zmpl" },
+            "3": { "patterns": [{ "include": "#partial-arguments" }] }
+          }
+        },
+        {
+          "match": "\\s*(@partial)\\s+(\\w+(?:/\\w+)*)",
+          "name": "keyword.control.partial.simple.zmpl",
+          "captures": {
+            "1": { "name": "keyword.control.zmpl" },
+            "2": { "name": "entity.name.function.zmpl" }
+          }
+        },
+        {
+          "match": "@endif\\s*$",
+          "name": "keyword.control.endif.zmpl"
+        },
+        {
+          "match": "@endfor\\s*$",
+          "name": "keyword.control.endfor.zmpl"
+        }
+      ]
+    },
+    "variable-interpolation": {
+      "patterns": [
+        {
+          "begin": "{{",
+          "end": "}}",
+          "name": "meta.interpolation.zmpl",
+          "patterns": [
+            {
+              "match": "\\.",
+              "name": "punctuation.accessor.dot.zmpl"
+            },
+            {
+              "match": "\\$",
+              "name": "constant.language.dollar.zmpl"
+            },
+            {
+              "match": "\\w+",
+              "name": "variable.other.zmpl"
+            }
+          ]
+        }
+      ]
+    },
+    "control-keywords": {
+      "patterns": [
+        {
+          "match": "@(if|else if|for|partial|endif|endfor)",
+          "name": "keyword.control.zmpl"
+        },
+        {
+          "match": "\\s(or|and)\\s",
+          "name": "keyword.operator.logical.zmpl"
+        },
+        {
+          "match": "\\.",
+          "name": "punctuation.accessor.dot.zmpl"
+        },
+        {
+          "match": "\\$",
+          "name": "constant.language.dollar.zmpl"
+        },
+        {
+          "match": "\\w+",
+          "name": "variable.other.zmpl"
+        }
+      ]
+    },
+    "args-keywords": {
+      "patterns": [
+        {
+          "match": "@args",
+          "name": "keyword.control.zmpl"
+        },
+        {
+          "match": "(\\w+):\\s*",
+          "captures": {
+            "1": { "name": "variable.parameter.zmpl" }
+          }
+        },
+        {
+          "match": "\\*\\w+",
+          "name": "storage.type.zmpl"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.zmpl"
+        }
+      ]
+    },
+    "partial-arguments": {
+      "patterns": [
+        {
+          "match": "(\\w+):\\s*",
+          "captures": {
+            "1": { "name": "variable.parameter.zmpl" }
+          }
+        },
+        {
+          "match": "\"([^\"]*?)\"",
+          "name": "string.quoted.double.zmpl"
+        },
+        {
+          "match": "\\.\\w+(?:\\.\\w+)*",
+          "name": "variable.other.property.zmpl"
+        },
+        {
+          "match": "\\$\\.\\w+(?:\\.\\w+)*",
+          "name": "variable.other.property.zmpl"
+        },
+        {
+          "match": "\\$",
+          "name": "constant.language.dollar.zmpl"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.zmpl"
+        }
+      ]
+    }
+  }
 }
