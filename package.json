@@ -3,11 +3,22 @@
   "displayName": "Zmpl",
   "description": "Zmpl language grammar",
   "version": "0.0.1",
+  "publisher": "uzyn",
+  "author": {
+    "name": "U-Zyn Chua",
+    "email": "chua@uzyn.com",
+    "url": "https://uzyn.com/"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/uzyn/zmpl-grammar",
+    "type": "git"
+  },
   "engines": {
     "vscode": "^1.98.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages", "Zmpl", "Zig", "Grammar", "Visual Studio Code", "Textmate", "Sublime Text"
   ],
   "contributes": {
     "languages": [{
