@@ -2,61 +2,21 @@
 
 [Zmpl](https://github.com/jetzig-framework/zmpl) is a templating language for Zig.
 
+Learn more about Zmpl at the [documentation](https://www.jetzig.dev/documentation/sections/zmpl/introduction).
+
+## Features
+
 This is a Visual Studio Code extension that provides syntax highlighting for Zmpl files.
 
-Sample syntax highlighting of Zmpl file in Monokai theme:
+Sample in Monokai theme:
 
 ![Sample syntax highlighting in Monokai theme](public/sample.png)
 
 
-## Requirements
+## Credits
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+* [https://github.com/z1fire/zmpl-syntax-highlighting-vscode](Zackary Housen's VS Code extensions)
 
-## Extension Settings
+## License
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+MIT License. Copyright (c) 2025 [U-Zyn Chua](https://uzyn.com).
