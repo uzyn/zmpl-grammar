@@ -30,7 +30,10 @@
     "grammars": [{
       "language": "zmpl",
       "scopeName": "text.html.zmpl",
-      "path": "./syntaxes/zmpl.tmLanguage.json"
+      "path": "./syntaxes/zmpl.tmLanguage.json",
+      "embeddedLanguages": {
+        "text.html.basic": "html"
+      }
     }]
   }
 }

@@ -22,8 +22,8 @@
 }
 
 @markdown {
-    Some _very convenient_ markdown.
-    References are supported too: {{.user.email}}
+  Some _very convenient_ markdown.
+  References are supported too: {{.user.email}}
 }
 
 <!-- Partials -->
@@ -45,16 +45,16 @@
 <div>Some regular HTML</div>
 
 @zig {
+  var x = 0;
+
+  <div>Some HTML inside a Zig block. {{variable}}</div>
+
+  if (true) {
     var x = 0;
-
-    <div>Some HTML inside a Zig block. {{variable}}</div>
-
-    if (true) {
-        var x = 0;
-        while (x < 10) {
-            x += 1;
-        }
+    while (x < 10) {
+      x += 1;
     }
+  }
 }
 
 <div>Mixed blocks</div>
@@ -72,11 +72,11 @@
 }
 
 @html {
-    <div>Some HTML</div>
+  <div>Some HTML</div>
 
-    @zig {
-        var x = 0;
-    }
+  @zig {
+    var x = 0;
+  }
 
-    <span>Back to HTML</span>
+  <span>Back to HTML</span>
 }
