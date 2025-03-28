@@ -146,7 +146,7 @@
           }
         },
         {
-          "match": "\\s*(@partial)\\s+(\\w+(?:/\\w+)*)\\s*\\((.*?)\\)",
+          "match": "\\s*(@partial)\\s+([\\w-]+(?:/[\\w-]+)*)\\s*\\((.*?)\\)",
           "name": "keyword.control.partial.zmpl",
           "captures": {
             "1": { "name": "keyword.control.zmpl" },
@@ -155,7 +155,7 @@
           }
         },
         {
-          "match": "\\s*(@partial)\\s+(\\w+(?:/\\w+)*)",
+          "match": "\\s*(@partial)\\s+([\\w-]+(?:/[\\w-]+)*)",
           "name": "keyword.control.partial.simple.zmpl",
           "captures": {
             "1": { "name": "keyword.control.zmpl" },
@@ -188,7 +188,7 @@
               "name": "constant.language.dollar.zmpl"
             },
             {
-              "match": "\\w+",
+              "match": "[\\w-]+",
               "name": "variable.other.zmpl"
             }
           ]
@@ -214,7 +214,7 @@
           "name": "constant.language.dollar.zmpl"
         },
         {
-          "match": "\\w+",
+          "match": "[\\w-]+",
           "name": "variable.other.zmpl"
         }
       ]
@@ -226,13 +226,13 @@
           "name": "keyword.control.zmpl"
         },
         {
-          "match": "(\\w+):\\s*",
+          "match": "([\\w-]+):\\s*",
           "captures": {
             "1": { "name": "variable.parameter.zmpl" }
           }
         },
         {
-          "match": "\\*\\w+",
+          "match": "\\*[\\w-]+",
           "name": "storage.type.zmpl"
         },
         {
@@ -244,7 +244,7 @@
     "partial-arguments": {
       "patterns": [
         {
-          "match": "(\\w+):\\s*",
+          "match": "([\\w-]+):\\s*",
           "captures": {
             "1": { "name": "variable.parameter.zmpl" }
           }
@@ -254,11 +254,11 @@
           "name": "string.quoted.double.zmpl"
         },
         {
-          "match": "\\.\\w+(?:\\.\\w+)*",
+          "match": "\\.[\\w-]+(?:\\.[\\w-]+)*",
           "name": "variable.other.property.zmpl"
         },
         {
-          "match": "\\$\\.\\w+(?:\\.\\w+)*",
+          "match": "\\$\\.[\\w-]+(?:\\.[\\w-]+)*",
           "name": "variable.other.property.zmpl"
         },
         {
