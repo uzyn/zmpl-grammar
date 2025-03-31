@@ -1,9 +1,7 @@
 {
     "comments": {
-        "lineComment": "//",
         "blockComment": [ "<!--", "-->" ]
     },
-    // symbols used as brackets
     "brackets": [
         ["<!--", "-->"],
         ["{{", "}}"],
@@ -11,7 +9,6 @@
         ["[", "]"],
         ["(", ")"]
     ],
-    // symbols that are auto closed when typing
     "autoClosingPairs": [
         ["{{", "}}"],
         ["{", "}"],
@@ -21,7 +18,6 @@
         ["'", "'"],
         ["<!--", "-->"],
     ],
-    // symbols that can be used to surround a selection
     "surroundingPairs": [
         ["{{", "}}"],
         ["{", "}"],
@@ -30,7 +26,6 @@
         ["\"", "\""],
         ["'", "'"]
     ],
-    // indentation rules
     "indentationRules": {
         "increaseIndentPattern": "<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr)\\b|[^>]*\\/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|@(zig|markdown|html)\\s*\\{|\\{[^}\"']*$",
         "decreaseIndentPattern": "^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9]+\\b[^>]*>|-->|\\})"
