@@ -4,6 +4,10 @@ All notable changes to the "zmpl" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.3] - 2025-04-27
+
+- Initial Sublime Text package release.
+
 ## [1.2] - 2025-03-28
 
 - Added proper indentation support following HTML rules
