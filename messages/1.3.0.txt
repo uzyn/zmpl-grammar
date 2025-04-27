@@ -1,8 +1,0 @@
-Initial release of Zmpl syntax highlighting for Sublime Text.
-
-Features:
-- Syntax highlighting for Zmpl files (.zmpl)
-- Highlighting for embedded HTML, Zig, and Markdown
-- Support for Zmpl directives, variables, and interpolation
-
-Learn more about Zmpl at: https://www.jetzig.dev/documentation/sections/zmpl/introduction

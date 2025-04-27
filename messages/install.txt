@@ -1,8 +1,0 @@
-Thank you for installing Zmpl syntax highlighting for Sublime Text!
-
-Zmpl is a templating language for Zig. This package provides syntax highlighting for .zmpl files.
-
-Learn more about Zmpl at: https://www.jetzig.dev/documentation/sections/zmpl/introduction
-
----
-U-Zyn Chua (https://uzyn.com)
