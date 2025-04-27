@@ -1,0 +1,170 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/syntax.html
+name: Zmpl
+file_extensions: [zmpl]
+scope: text.html.zmpl
+
+contexts:
+  main:
+    - include: common-zmpl-patterns
+    - include: scope:text.html.basic
+
+  common-zmpl-patterns:
+    - include: zmpl-directives
+    - include: variable-interpolation
+    - include: modes
+
+  modes:
+    - match: '@html\s*\{'
+      scope: keyword.control.zmpl
+      push: html-mode
+
+    - match: '@zig\s*\{'
+      scope: keyword.control.zmpl
+      push: zig-mode
+
+    - match: '@markdown\s*\{'
+      scope: keyword.control.zmpl
+      push: markdown-mode
+
+    - match: '@(extend|args|end|endif|endfor)'
+      scope: keyword.control.zmpl
+
+  html-mode:
+    - meta_scope: meta.embedded.html.zmpl
+    - match: '\}'
+      pop: true
+    - include: common-zmpl-patterns
+    - include: scope:text.html.basic
+
+  zig-mode:
+    - meta_scope: meta.embedded.zig.zmpl
+    - match: '^\s*\}(?=\s*$)'
+      pop: true
+    - match: '^\s*<.+$'
+      push: html-in-zig
+    - include: common-zmpl-patterns
+    - include: zig-block
+    - include: scope:source.zig
+
+  html-in-zig:
+    - include: scope:text.html.basic
+    - match: '$'
+      pop: true
+
+  markdown-mode:
+    - meta_scope: meta.embedded.markdown.zmpl
+    - match: '\}'
+      pop: true
+    - include: common-zmpl-patterns
+    - include: scope:text.html.markdown
+
+  zig-block:
+    - match: '\{'
+      scope: punctuation.section.block.begin.zig
+      push: zig-block-content
+
+  zig-block-content:
+    - meta_scope: meta.brace.block.zig
+    - match: '\}'
+      scope: punctuation.section.block.end.zig
+      pop: true
+    - include: zig-block
+    - include: scope:source.zig
+
+  zmpl-directives:
+    - match: '\s*@if\s+.*$'
+      scope: keyword.control.if.zmpl
+      captures:
+        0: control-keywords
+
+    - match: '\s*@else if\s+.*$'
+      scope: keyword.control.elseif.zmpl
+      captures:
+        0: control-keywords
+
+    - match: '@else\s*$'
+      scope: keyword.control.else.zmpl
+
+    - match: '\s*@args\s+.*$'
+      scope: meta.args.zmpl
+      captures:
+        0: args-keywords
+
+    - match: '\s*@for\s+.*$'
+      scope: keyword.control.for.zmpl
+      captures:
+        0: control-keywords
+
+    - match: '\s*(@partial)\s+([\w-]+(?:/[\w-]+)*)\s*\((.*?)\)'
+      scope: keyword.control.partial.zmpl
+      captures:
+        1: keyword.control.zmpl
+        2: entity.name.function.zmpl
+        3: partial-arguments
+
+    - match: '\s*(@partial)\s+([\w-]+(?:/[\w-]+)*)'
+      scope: keyword.control.partial.simple.zmpl
+      captures:
+        1: keyword.control.zmpl
+        2: entity.name.function.zmpl
+
+    - match: '@endif\s*$'
+      scope: keyword.control.endif.zmpl
+
+    - match: '@endfor\s*$'
+      scope: keyword.control.endfor.zmpl
+
+  variable-interpolation:
+    - match: '{{'
+      push: interpolation-content
+
+  interpolation-content:
+    - meta_scope: meta.interpolation.zmpl
+    - match: '}}'
+      pop: true
+    - match: '\.'
+      scope: punctuation.accessor.dot.zmpl
+    - match: '\$'
+      scope: constant.language.dollar.zmpl
+    - match: '[\w-]+'
+      scope: variable.other.zmpl
+
+  control-keywords:
+    - match: '@(if|else if|for|partial|endif|endfor)'
+      scope: keyword.control.zmpl
+    - match: '\s(or|and)\s'
+      scope: keyword.operator.logical.zmpl
+    - match: '\.'
+      scope: punctuation.accessor.dot.zmpl
+    - match: '\$'
+      scope: constant.language.dollar.zmpl
+    - match: '[\w-]+'
+      scope: variable.other.zmpl
+
+  args-keywords:
+    - match: '@args'
+      scope: keyword.control.zmpl
+    - match: '([\w-]+):\s*'
+      captures:
+        1: variable.parameter.zmpl
+    - match: '\*[\w-]+'
+      scope: storage.type.zmpl
+    - match: ','
+      scope: punctuation.separator.comma.zmpl
+
+  partial-arguments:
+    - match: '([\w-]+):\s*'
+      captures:
+        1: variable.parameter.zmpl
+    - match: '"([^"]*?)"'
+      scope: string.quoted.double.zmpl
+    - match: '\.[\w-]+(?:\.[\w-]+)*'
+      scope: variable.other.property.zmpl
+    - match: '\$\.[\w-]+(?:\.[\w-]+)*'
+      scope: variable.other.property.zmpl
+    - match: '\$'
+      scope: constant.language.dollar.zmpl
+    - match: ','
+      scope: punctuation.separator.comma.zmpl
