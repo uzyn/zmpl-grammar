@@ -87,10 +87,10 @@ contexts:
     - match: '@else\s*$'
       scope: keyword.control.else.zmpl
 
-    - match: '\s*@args\s+.*$'
-      scope: meta.args.zmpl
+    - match: '\s*@args\b'
       captures:
-        0: args-keywords
+        0: keyword.control.zmpl
+      push: args-line
 
     - match: '\s*@for\s+.*$'
       scope: keyword.control.for.zmpl
@@ -144,8 +144,6 @@ contexts:
       scope: variable.other.zmpl
 
   args-keywords:
-    - match: '@args'
-      scope: keyword.control.zmpl
     - match: '([\w-]+):\s*'
       captures:
         1: variable.parameter.zmpl
@@ -168,3 +166,9 @@ contexts:
       scope: constant.language.dollar.zmpl
     - match: ','
       scope: punctuation.separator.comma.zmpl
+
+  args-line:
+    - meta_scope: meta.args.zmpl
+    - include: args-keywords
+    - match: '\n'
+      pop: true
