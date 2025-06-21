@@ -7,7 +7,7 @@ Learn more about Zmpl at the [documentation](https://www.jetzig.dev/documentatio
 ## Install
 
 - Visual Studio Code: install from [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=uzyn.zmpl).
-- Sublime Text: install through Package Control (search for "Zmpl").
+- Sublime Text: install from [Package Control](https://packagecontrol.io/packages/Zmpl).
 
 ## Features
 
